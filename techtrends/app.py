@@ -1,7 +1,11 @@
 import sqlite3
 
-from flask import Flask, jsonify, json, render_template, request, url_for, redirect, flash
+from flask import Flask, jsonify, json, render_template, request, url_for, redirect, flash, current_app, g
 from werkzeug.exceptions import abort
+
+# db connection count
+# This function returns the number of times the database connection has been created
+
 
 # Function to get a database connection.
 # This function connects to database with the name `database.db`
@@ -17,6 +21,17 @@ def get_post(post_id):
                         (post_id,)).fetchone()
     connection.close()
     return post
+
+# Funection to get database metrics
+def get_metrics():
+    connection = get_db_connection()
+    post_count = connection.execute('SELECT COUNT(*) FROM posts').fetchone()[0]
+    # SQLlite database connection count
+    dbc_count = 1
+    connection.close()
+
+    system_metrics = {'post_count': post_count, 'db_connection_count': dbc_count}
+    return system_metrics
 
 # Define the Flask application
 app = Flask(__name__)
@@ -70,6 +85,16 @@ def create():
 def healthz():
     response = app.response_class(
         response=json.dumps({'status': 'ok'}),
+        status=200,
+        mimetype='application/json'
+    )
+    return response
+
+@app.route('/metrics')
+def metrics():
+    system_metrics = get_metrics()
+    response = app.response_class(
+        response=json.dumps(system_metrics),
         status=200,
         mimetype='application/json'
     )

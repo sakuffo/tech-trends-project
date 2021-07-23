@@ -5,13 +5,22 @@ from werkzeug.exceptions import abort
 
 # db connection count
 # This function returns the number of times the database connection has been created
+class DbConnectionCount:
+    def __init__(self):
+        self.db_con_count = 0
+    
+    def step(self):
+        self.db_con_count += 1
 
+    def finalize(self):
+        return self.db_con_count
 
 # Function to get a database connection.
 # This function connects to database with the name `database.db`
 def get_db_connection():
     connection = sqlite3.connect('database.db')
     connection.row_factory = sqlite3.Row
+    connection.create_aggregate('num_connected', -1, DbConnectionCount)
     return connection
 
 # Function to get a post using its ID
@@ -102,4 +111,5 @@ def metrics():
 
 # start the application on port 3111
 if __name__ == "__main__":
-   app.run(host='0.0.0.0', port='3111')
+    DbConnectionCount
+    app.run(host='0.0.0.0', port='3111')

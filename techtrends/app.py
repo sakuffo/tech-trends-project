@@ -66,10 +66,10 @@ def create():
     return render_template('create.html')
 
 # Define the post creation functionality 
-@app.route('/healthz', methods=('GET'))
+@app.route('/healthz')
 def healthz():
     response = app.response_class(
-        response=json.dumps("DOKAY"),
+        response=json.dumps({'status': 'ok'}),
         status=200,
         mimetype='application/json'
     )

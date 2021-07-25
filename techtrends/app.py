@@ -19,9 +19,13 @@ def get_post(post_id):
     connection = get_db_connection()
     post = connection.execute('SELECT * FROM posts WHERE id = ?',
                         (post_id,)).fetchone()
-    connection.close()
-    logging.info('Post %s retrieved from database', str(post_id))
-    return post
+    if(post):
+        logging.debug('Article "%s" retrieved from database with ID [%s]', str(post["title"]), str(post["id"]))
+        connection.close()
+        return post
+    else:
+        logging.debug('Article with ID [%s] not found in database, 404 page loaded', str(post_id))
+        return None
 
 # Funection to get database metrics
 def get_metrics():
@@ -59,6 +63,7 @@ def post(post_id):
 # Define the About Us page
 @app.route('/about')
 def about():
+    logging.debug('About Us page requested')
     return render_template('about.html')
 
 # Define the post creation functionality 
@@ -75,6 +80,7 @@ def create():
             connection.execute('INSERT INTO posts (title, content) VALUES (?, ?)',
                          (title, content))
             connection.commit()
+            logging.debug('Article "%s" saved to database', str(title))
             connection.close()
 
             return redirect(url_for('index'))

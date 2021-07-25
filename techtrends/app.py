@@ -20,7 +20,7 @@ def get_post(post_id):
     post = connection.execute('SELECT * FROM posts WHERE id = ?',
                         (post_id,)).fetchone()
     connection.close()
-    logging.info('Post %p retrieved from database', post_id)
+    logging.info('Post %s retrieved from database', str(post_id))
     return post
 
 # Funection to get database metrics
@@ -104,5 +104,12 @@ def metrics():
 # start the application on port 3111
 if __name__ == "__main__":
     # logger to stdout and stderr to app.log file with debug level
-    logging.basicConfig(level=logging.DEBUG, encoding='utf-8', filename='./app.log', filemode='w')
+    logging.basicConfig(
+        level=logging.DEBUG, 
+        encoding='utf-8', 
+        filename='./app.log', 
+        filemode='w',
+        format='%(asctime)s %(levelname)s: %(message)s',
+        datefmt= '%d/%m/%Y %I:%M:%S %p',
+        )
     app.run(host='0.0.0.0', port='3111')

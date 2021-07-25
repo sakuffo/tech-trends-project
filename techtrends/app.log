@@ -1,0 +1,4 @@
+25/07/2021 04:16:34 PM INFO:  * Running on http://0.0.0.0:3111/ (Press CTRL+C to quit)
+25/07/2021 04:16:36 PM INFO: 76.67.10.245 - - [25/Jul/2021 16:16:36] "GET / HTTP/1.1" 200 -
+25/07/2021 04:16:37 PM INFO: Post 2 retrieved from database
+25/07/2021 04:16:37 PM INFO: 76.67.10.245 - - [25/Jul/2021 16:16:37] "GET /2 HTTP/1.1" 200 -

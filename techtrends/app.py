@@ -1,26 +1,17 @@
 import sqlite3
+import logging
 
 from flask import Flask, jsonify, json, render_template, request, url_for, redirect, flash, current_app, g
 from werkzeug.exceptions import abort
 
-# db connection count
-# This function returns the number of times the database connection has been created
-class DbConnectionCount:
-    def __init__(self):
-        self.db_con_count = 0
-    
-    def step(self):
-        self.db_con_count += 1
 
-    def finalize(self):
-        return self.db_con_count
 
 # Function to get a database connection.
 # This function connects to database with the name `database.db`
 def get_db_connection():
     connection = sqlite3.connect('database.db')
     connection.row_factory = sqlite3.Row
-    connection.create_aggregate('num_connected', -1, DbConnectionCount)
+    # connection.create_aggregate('num_connected', -1, DbConnectionCount)
     return connection
 
 # Function to get a post using its ID
@@ -29,6 +20,7 @@ def get_post(post_id):
     post = connection.execute('SELECT * FROM posts WHERE id = ?',
                         (post_id,)).fetchone()
     connection.close()
+    logging.info('Post %p retrieved from database', post_id)
     return post
 
 # Funection to get database metrics
@@ -111,5 +103,6 @@ def metrics():
 
 # start the application on port 3111
 if __name__ == "__main__":
-    DbConnectionCount
+    # logger to stdout and stderr to app.log file with debug level
+    logging.basicConfig(level=logging.DEBUG, encoding='utf-8', filename='./app.log', filemode='w')
     app.run(host='0.0.0.0', port='3111')

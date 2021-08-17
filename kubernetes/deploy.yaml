@@ -17,7 +17,7 @@ spec:
         app: techtrends
     spec:
       containers:
-      - image: sakuffo/techtrends
+      - image: gcr.io/acg-gke-321705/techtrends:latest
         name: techtrends
         ports:
         - containerPort: 3111

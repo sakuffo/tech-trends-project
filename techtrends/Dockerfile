@@ -1,4 +1,4 @@
-FROM python:2.7
+FROM python:3.9
 EXPOSE 3111
 WORKDIR /
 COPY . .

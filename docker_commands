@@ -1,8 +1,9 @@
 ## Docker commands used to build the application 
-docker build -t sakuffo/tech-trends:v1.0.0 .
+docker build -t sakuffo/techtrends:v1.0.0 .
 
 ## Docker commands used to run the application
-docker run -p 7111:3111 sakuffo/techtrends:latest
+docker run -p 7111:3111 sakuffo/techt:latest
+>>>>>>> testing push
 
 ## Docker commands used to get the application logs
 # TODO: insert the docker logs command

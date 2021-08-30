@@ -1,0 +1,19 @@
+30/08/2021 02:44:07 PM INFO:  * Running on http://0.0.0.0:3111/ (Press CTRL+C to quit)
+30/08/2021 02:44:24 PM INFO: 127.0.0.1 - - [30/Aug/2021 14:44:24] "GET / HTTP/1.1" 200 -
+30/08/2021 02:44:25 PM INFO: 127.0.0.1 - - [30/Aug/2021 14:44:25] "GET /static/css/main.css HTTP/1.1" 200 -
+30/08/2021 02:44:25 PM INFO: 127.0.0.1 - - [30/Aug/2021 14:44:25] "GET /favicon.ico HTTP/1.1" 404 -
+30/08/2021 02:44:32 PM DEBUG: Article "KubeCon + CloudNativeCon 2021" retrieved from database with ID [2]
+30/08/2021 02:44:32 PM INFO: 127.0.0.1 - - [30/Aug/2021 14:44:32] "GET /2 HTTP/1.1" 200 -
+30/08/2021 02:44:40 PM INFO: 127.0.0.1 - - [30/Aug/2021 14:44:40] "GET / HTTP/1.1" 200 -
+30/08/2021 02:44:42 PM DEBUG: About Us page requested
+30/08/2021 02:44:42 PM INFO: 127.0.0.1 - - [30/Aug/2021 14:44:42] "GET /about HTTP/1.1" 200 -
+30/08/2021 02:44:45 PM INFO: 127.0.0.1 - - [30/Aug/2021 14:44:45] "GET /create HTTP/1.1" 200 -
+30/08/2021 02:45:06 PM DEBUG: Article "Kubernetes For SMB" created!
+30/08/2021 02:45:06 PM INFO: 127.0.0.1 - - [30/Aug/2021 14:45:06] "POST /create HTTP/1.1" 302 -
+30/08/2021 02:45:06 PM INFO: 127.0.0.1 - - [30/Aug/2021 14:45:06] "GET / HTTP/1.1" 200 -
+30/08/2021 02:45:25 PM DEBUG: Article "KubeCon + CloudNativeCon 2021" retrieved from database with ID [2]
+30/08/2021 02:45:25 PM INFO: 127.0.0.1 - - [30/Aug/2021 14:45:25] "GET /2 HTTP/1.1" 200 -
+30/08/2021 02:45:28 PM DEBUG: Article with ID [222] not found in database, 404 page loaded
+30/08/2021 02:45:28 PM INFO: 127.0.0.1 - - [30/Aug/2021 14:45:28] "GET /222 HTTP/1.1" 404 -
+30/08/2021 02:46:12 PM INFO: 127.0.0.1 - - [30/Aug/2021 14:46:12] "GET /healthz HTTP/1.1" 200 -
+30/08/2021 02:46:16 PM INFO: 127.0.0.1 - - [30/Aug/2021 14:46:16] "GET /metrics HTTP/1.1" 200 -

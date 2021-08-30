@@ -132,7 +132,6 @@ if __name__ == "__main__":
     # logger to stdout and stderr to app.log file with debug level
     logging.basicConfig(
         level=logging.DEBUG, 
-        encoding='utf-8', 
         filename='app.log', 
         format='%(asctime)s %(levelname)s: %(message)s',
         datefmt= '%d/%m/%Y %I:%M:%S %p',
